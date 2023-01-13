@@ -1,0 +1,197 @@
+
+#EJECUTOR
+exec --no-startup-id dex --autostart --environment i3
+#Fuente de i3
+font pango: Noto Sans Regular 10
+
+#Tecla super
+set $mod Mod4
+#Forma de organizacion de ventanas
+workspace_layout default
+
+#Indicador de bordes en las ventanas
+#new_window pixel 1
+
+#Inner/Ouner (Probar Luego)
+gaps inner 3
+gaps outer 3
+
+#Para mover ventanas con el mouse
+floating_modifier $mod
+###########################################CONTROL DEL ESCRITORIO######################################################
+#Cambiar entre escritorios
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+#Lo mismo pero con teclas
+bindsym $mod+1    workspace  $ws1
+bindsym $mod+2    workspace  $ws2
+bindsym $mod+3    workspace  $ws3
+bindsym $mod+4    workspace  $ws4
+bindsym $mod+5    workspace  $ws5
+bindsym $mod+6    workspace  $ws6
+bindsym $mod+7    workspace  $ws7
+bindsym $mod+8    workspace  $ws8
+bindsym $mod+9    workspace  $ws9
+bindsym $mod+0    workspace  $ws10
+#Mover ventanas entre escritorios
+bindsym $mod+Shift+1    move container to workspace  $ws1
+bindsym $mod+Shift+2    move container to workspace  $ws2
+bindsym $mod+Shift+3    move container to workspace  $ws3
+bindsym $mod+Shift+4    move container to workspace  $ws4
+bindsym $mod+Shift+5    move container to workspace  $ws5
+bindsym $mod+Shift+6    move container to workspace  $ws6
+bindsym $mod+Shift+7    move container to workspace  $ws7
+bindsym $mod+Shift+8    move container to workspace  $ws8
+bindsym $mod+Shift+9    move container to workspace  $ws9
+bindsym $mod+Shift+0    move container to workspace  $ws10
+#Moverse entre Ventanas
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+#Mover Ventanas 
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+#Cambiar horientacion
+#Vertical
+bindsym $mod+v split v
+#Horizontal
+bindsym $mod+h split h
+#Pantalla Completa
+bindsym $mod+f fullscreen toggle
+#Cambiar entre ventana Flotante
+bindsym $mod+Shift+space floating toggle
+#Nueva ventana denumerada
+bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
+#Iconos de los escritorios
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+#Asignaciones de programas para cada escritorio
+assign [class="Alacritty"] $ws1
+assign [class="(?i)firefox"] $ws2
+assign [class="Nemo"] $ws3
+assign [class="Thunderbird"] $ws4
+assign [class="TelegramDesktop"] $ws5
+#Autoasignacion de ventanas
+for_window [class=Alacritty] focus
+for_window [class=(?i)firefox] focus
+for_window [class=Nemo] focus
+for_window [class=Thunderbird] focus
+for_window [class=TelegramDesktop] focus
+####################################CONFIGURACIONES SECUNDARIAS###############################
+#Transparencias
+exec --no-startup-id xcompmgr -C -n &
+#Administador de volumen
+exec --no-startup-id volctl
+#Wallpaper (Requiere nitrogen)
+exec --no-startup-id nitrogen --restore --save --set-auto
+#Autenticacion interactiva de gnome
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#Poner el teclado en español u otros
+exec --no-startup-id setxkbmap -layout es
+#Desabilitar el ahorro de energia
+exec --no-startup-id xset -dpms
+#Notificaciones (Requiere Notifyd o xfce4)
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+#Poner Ventanas en flotante automaticamente
+for_window [class="Galculator" instance="galculator"] floating enable
+#Auto-ejecutar estas apps---------------------------------------------------------
+#Ejecutar xscreensaver
+exec --no-startup-id xscreensaver --no-splash
+#Ejecutar clipman
+exec --no-startup-id xfce4-clipman
+
+
+#########################################ACCIONES#######################################################
+#Nemo
+bindsym $mod+n exec --no-startup-id nemo
+#firefox
+bindsym $mod+w exec --no-startup-id firefox
+#el terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+#Cerrar
+bindsym $mod+q kill
+#Power Menu
+bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+#bloquear 
+bindsym $mod+l exec ~/.config/i3/scripts/blur-lock
+#Reiniciar i3
+bindsym $mod+Shift+r restart
+#recargar i3-config
+bindsym $mod+Shift+c reload
+#Screenshot
+bindsym Print exec --no-startup-id gnome-screenshot -a
+#Perfiles de potencia
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
+#Ejecutar rofi
+bindsym $mod+d exec rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
+#################################################CONTROL MULTIMEDIA####################################
+#Control del brillo (Requiere xbacklight)
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+#Volumen
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+#Mutear
+bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
+#Control multimedia
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+#intercambiar a Auriculares 
+bindsym $mod+p exec /usr/local/bin/switch-audio-port
+
+#########################I3-BAR Y CONFIGURACION2 ETC..############################
+#Variables de color---------------------------
+set $darkbluetrans	#08052b
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#323a45
+set $grey		#b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+#Colores de ventanas etc..------------------------------
+#Clase		        	borde		bground		texto		indicador	child_border
+client.focused		    	$grey	$darkblue	$white		$mediumgrey	$mediumgrey
+client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
+client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
+client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+#i3-bar---------------------------------------
+bar {
+		font pango: Noto Sans Regular 10
+		status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        i3bar_command i3bar --transparency FF
+	    	position top
+            tray_output primary
+		    tray_padding 0
+            strip_workspace_numbers yes
+
+		    colors {
+		    separator          $purple
+		    background         #00000000
+		    statusline         $white
+#                          		border 		        bg		txt		indicator
+		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
+		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
+		#inactive_workspace	#00000000   		$darkgrey	$grey		$purple
+		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+	}
+}
+#Activar o desactivar bordes
+default_border none 
