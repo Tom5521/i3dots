@@ -4,7 +4,7 @@ exec --no-startup-id dex --autostart --environment i3
 #Fuente de i3
 font pango: Noto Sans Regular 10
 ###############################POLYBAR##################################
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+#exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 
 
