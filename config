@@ -88,13 +88,13 @@ bindsym $mod+a layout toggle split
 assign [class="Alacritty"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
-assign [class="(?i)Visual Studio Code"] $ws4
-assign [class="Spotify"] $ws5
+assign [class="(?i)Code"] $ws4
+assign [class="(?i)Spotify"] $ws5
 #Autoasignacion de ventanas
 for_window [class=Alacritty] focus
 for_window [class=(?i)Firefox] focus
 for_window [class=Pcmanfm] focus
-#for_window [class=Thunderbird] focus
+for_window [class=(?i)Code] focus
 #for_window [class=TelegramDesktop] focus
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Transparencias
