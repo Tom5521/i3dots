@@ -4,7 +4,7 @@ exec --no-startup-id dex --autostart --environment i3
 #Fuente de i3
 font pango: Noto Sans Regular 10
 ###############################POLYBAR##################################
-#exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 
 
@@ -73,29 +73,29 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
+set $ws4 "4:"
+set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 #Cambiar tipo de mosaico
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+g layout stacking
+bindsym $mod+s layout tabbed
+bindsym $mod+a layout toggle split
 #Asignaciones de programas para cada escritorio
 assign [class="Alacritty"] $ws1
-assign [class="(?i)firefox"] $ws2
+assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
-assign [class="Thunderbird"] $ws4
-assign [class="WhatsApp"] $ws5
+assign [class="(?i)Visual Studio Code"] $ws4
+assign [class="Spotify"] $ws5
 #Autoasignacion de ventanas
 for_window [class=Alacritty] focus
-for_window [class=(?i)firefox] focus
+for_window [class=(?i)Firefox] focus
 for_window [class=Pcmanfm] focus
-for_window [class=Thunderbird] focus
-for_window [class=TelegramDesktop] focus
+#for_window [class=Thunderbird] focus
+#for_window [class=TelegramDesktop] focus
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Transparencias
 exec_always --no-startup-id picom -b
@@ -118,14 +118,22 @@ for_window [class="Galculator" instance="galculator"] floating enable
 exec --no-startup-id xscreensaver --no-splash
 #Ejecutar clipman
 exec --no-startup-id xfce4-clipman
-
-
+#Internet
+exec --no-startup-id nm-applet
+#KdeConnect
+exec --no-startup-id kdeconnect-indicator
+#Oneko
+#exec --no-startup-id oneko
 #########################################ACCIONES#######################################################
+#VScode
+bindsym $mod+c exec --no-startup-id code 
+#Spotify
+bindsym $mod+m exec --no-startup-id LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 #Pcmanfm
 bindsym $mod+n exec --no-startup-id pcmanfm
-#firefox
+#Navegador
 bindsym $mod+w exec --no-startup-id firefox
-#el terminal
+#terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 #Cerrar
 bindsym $mod+q kill

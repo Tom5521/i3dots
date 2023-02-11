@@ -121,10 +121,10 @@ typeset -A menu
 # Menu with keys/commands
 
 menu=(
-  [ Performance]="powerprofilesctl set performance"
-  [ Balanced]="powerprofilesctl set balanced"
-  [ Power Saver]="powerprofilesctl set power-saver"
-  [ Cancel]=""
+  [ Rendimiento]="powerprofilesctl set performance"
+  [ Balanceado]="powerprofilesctl set balanced"
+  [ Ahorrar Energia]="powerprofilesctl set power-saver"
+  [ Cancelar]=""
 )
 
 menu_nrows=${#menu[@]}
