@@ -85,13 +85,13 @@ bindsym $mod+g layout stacking
 bindsym $mod+s layout tabbed
 bindsym $mod+a layout toggle split
 #Asignaciones de programas para cada escritorio
-assign [class="Alacritty"] $ws1
+assign [class="Tilix"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="(?i)Code"] $ws4
 assign [class="(?i)Spotify"] $ws5
 #Autoasignacion de ventanas
-for_window [class=Alacritty] focus
+for_window [class=Tilix] focus
 for_window [class=(?i)Firefox] focus
 for_window [class=Pcmanfm] focus
 for_window [class=(?i)Code] focus
@@ -134,7 +134,7 @@ bindsym $mod+n exec --no-startup-id pcmanfm
 #Navegador
 bindsym $mod+w exec --no-startup-id firefox
 #terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id tilix
 #Cerrar
 bindsym $mod+q kill
 #Power Menu
