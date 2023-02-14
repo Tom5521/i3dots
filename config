@@ -99,8 +99,9 @@ for_window [class=(?i)Code] focus
 exec_always --no-startup-id picom -b
 #Administador de volumen
 exec --no-startup-id volctl
-#Wallpaper (Requiere nitrogen)
-exec --no-startup-id nitrogen --restore --save --set-auto
+#Wallpaper
+#exec --no-startup-id nitrogen --restore --save --set-auto
+exec --no-startup-id feh --bg-scale "/home/angel/Imágenes/Fondos de Pantalla PC/Astronautas wallpaper.jpg"
 #Autenticacion interactiva de gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #Poner el teclado en español u otros
@@ -181,11 +182,12 @@ set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 #Colores de ventanas etc..------------------------------
-#Clase		        	borde		bground		texto		indicador	child_border
-client.focused		    	$grey	$darkgrey	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$black	$black	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$black	$darkgrey	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# class                 border  bground text    indicator child_border
+client.focused          #000000 #000000 #FFFFFF #2E9EF4   #285577
+client.focused_inactive #333333 #303435 #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 #i3-bar---------------------------------------
 bar {
 		font pango: Noto Sans Regular 10
