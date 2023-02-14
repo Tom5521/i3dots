@@ -169,21 +169,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 #########################I3-BAR Y CONFIGURACION2 ETC..############################
-#Variables de color---------------------------
-set $darkbluetrans	#08052b
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#323a45
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
 #Colores de ventanas etc..------------------------------
 # class                 border  bground text    indicator child_border
-client.focused          #000000 #000000 #FFFFFF #2E9EF4   #285577
+client.focused          #4A4A4A #000000 #FFFFFF #2E9EF4   #285577
 client.focused_inactive #333333 #303435 #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -199,14 +187,14 @@ bar {
             strip_workspace_numbers yes
 
 		    colors {
-		    separator          $purple
-		    background         #00000000
-		    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		#inactive_workspace	#00000000   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+		    #separator          $purple
+		    #background         #00000000
+		    #statusline         $white
+						#	Borde   Fondo   Letras
+		focused_workspace  #696969 #222222 #FFFFFF
+		active_workspace   #333333 #222222 #FFFFFF
+		inactive_workspace #000000 #000000 #C7C7C7
+		urgent_workspace   #900000 #900000 #FFFFFF
 	}
 }
 #Activar o desactivar bordes
