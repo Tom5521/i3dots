@@ -3,7 +3,8 @@
 exec --no-startup-id dex --autostart --environment i3
 #Fuente de i3
 font pango: Noto Sans Regular 10
-
+#Polybar
+#exec_always --no-startup-id bash /home/angel/.config/i3/polybar.sh
 
 
 #Tecla super
@@ -15,8 +16,8 @@ workspace_layout default
 new_window pixel 1
 
 #Inner/Ouner
-gaps inner 3
-gaps outer 3
+gaps inner 1
+gaps outer 1
 
 #Para mover ventanas con el mouse
 floating_modifier $mod
@@ -71,7 +72,7 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:"
+set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6"
 set $ws7 "7"
@@ -100,8 +101,8 @@ exec_always --no-startup-id picom -b
 #Administador de volumen
 exec --no-startup-id volctl
 #Wallpaper
-#exec --no-startup-id nitrogen --restore --save --set-auto
-exec --no-startup-id feh --bg-scale "/home/angel/Imágenes/Fondos de Pantalla PC/Astronautas wallpaper.jpg"
+exec --no-startup-id nitrogen --restore --save --set-auto
+#exec --no-startup-id feh --bg-scale "/home/angel/Imágenes/Fondos de Pantalla PC/Astronautas wallpaper.jpg"
 #Autenticacion interactiva de gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #Poner el teclado en español u otros
@@ -113,8 +114,10 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #Poner Ventanas en flotante automaticamente
 for_window [class="Galculator" instance="galculator"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
+#Mate power manager
+#exec --no-startup-id mate-power-manager
 #Ejecutar xscreensaver
-exec --no-startup-id xscreensaver --no-splash
+#exec --no-startup-id xscreensaver --no-splash
 #Ejecutar clipman
 exec --no-startup-id xfce4-clipman
 #Internet
@@ -170,15 +173,16 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 #########################I3-BAR Y CONFIGURACION2 ETC..############################
 #Colores de ventanas etc..------------------------------
-# class                 border  bground text    indicator child_border
+#class                 border  bground text    indicator child_border
 client.focused          #4A4A4A #000000 #FFFFFF #2E9EF4   #285577
 client.focused_inactive #333333 #303435 #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 #i3-bar---------------------------------------
+
 bar {
-		font pango: Noto Sans Regular 10
+		font pango: Noto Sans Regular 9,Font Awesome 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
         i3bar_command i3bar --transparency FF
 	    	position top
@@ -190,10 +194,10 @@ bar {
 		    #separator          $purple
 		    #background         #00000000
 		    #statusline         $white
-						#	Borde   Fondo   Letras
-		focused_workspace  #696969 #222222 #FFFFFF
+#						#	Borde   Fondo   Letras
+		focused_workspace  #4A4A4A #000000 #FFFFFF
 		active_workspace   #333333 #222222 #FFFFFF
-		inactive_workspace #000000 #000000 #C7C7C7
+		inactive_workspace #000000 #000000 #8A8A8A
 		urgent_workspace   #900000 #900000 #FFFFFF
 	}
 }
