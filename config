@@ -119,7 +119,7 @@ for_window [class="Galculator" instance="galculator"] floating enable
 #Ejecutar xscreensaver
 #exec --no-startup-id xscreensaver --no-splash
 #Ejecutar clipman
-exec --no-startup-id xfce4-clipman
+exec --no-startup-id clipit &
 #Internet
 exec --no-startup-id nm-applet
 #KdeConnect
@@ -182,7 +182,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 #i3-bar---------------------------------------
 
 bar {
-		font pango: Noto Sans Regular 9,Font Awesome 10
+		font pango: Noto Sans Regular 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
         i3bar_command i3bar --transparency FF
 	    	position top
