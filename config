@@ -19,7 +19,7 @@ gaps outer 1
 
 #Para mover ventanas con el mouse
 floating_modifier $mod
-focus_follows_mouse yes
+focus_follows_mouse no
 ###########################################CONTROL DEL ESCRITORIO######################################################
 #Cambiar entre escritorios
 bindsym $mod+Tab workspace next
@@ -142,12 +142,13 @@ assign [class="Tilix"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="(?i)Code"] $ws4
-assign [class="spotify"] $ws5
-#Autoasignacion de ventanas
-for_window [class=Tilix] focus
-for_window [class=(?i)Firefox] focus
-for_window [class=Pcmanfm] focus
-for_window [class=(?i)Code] focus
+for_window [class="^Spotify"] move to workspace $ws5
+#Autofocus de ventanas
+for_window [class="^Spotify"] focus
+for_window [class="Tilix"] focus
+for_window [class="(?i)Firefox"] focus
+for_window [class="Pcmanfm"] focus
+for_window [class="(?i)Code"] focus
 #for_window [class=TelegramDesktop] focus
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Autotiling
@@ -162,7 +163,7 @@ exec --no-startup-id nitrogen --restore --save --set-auto
 #Autenticacion interactiva de gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #Poner el teclado en español u otros
-exec --no-startup-id setxkbmap -layout es
+exec_always --no-startup-id setxkbmap -layout es
 #Desabilitar el ahorro de energia
 exec --no-startup-id xset -dpms
 #Notificaciones (Requiere Notifyd o xfce4)
@@ -170,14 +171,15 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #Poner Ventanas en flotante automaticamente
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-for_window [class="KRuler"] floating enable
+for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable
+for_window [class="kruler" instance="kruler"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
 #Mate power manager
 #exec --no-startup-id mate-power-manager
 #Ejecutar xscreensaver
 #exec --no-startup-id xscreensaver --no-splash
 #Ejecutar clipman
-exec --no-startup-id clipit &
+exec --no-startup-id xfce4-clipman &
 #Internet
 exec --no-startup-id nm-applet
 #KdeConnect
@@ -210,8 +212,10 @@ bindsym Print exec --no-startup-id gnome-screenshot -a
 #Perfiles de potencia
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
-bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym $mod+d exec rofi -modi drun -show drun \
+#		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+d exec --no-startup-id xfce4-appfinder
+for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] resize set 640 480
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 #################################################CONTROL MULTIMEDIA####################################
@@ -250,7 +254,7 @@ bar {
         i3bar_command i3bar --transparency FF
 	    	position top
             tray_output primary
-		    padding 0 970 0 683
+		    padding 0 980 0 683
 			#tray_padding 0
             strip_workspace_numbers yes
 
