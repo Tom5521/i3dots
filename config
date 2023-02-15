@@ -3,24 +3,23 @@
 exec --no-startup-id dex --autostart --environment i3
 #Fuente de i3
 font pango: Noto Sans Regular 10
-#Polybar
-#exec_always --no-startup-id bash /home/angel/.config/i3/polybar.sh
-
 
 #Tecla super
 set $mod Mod4
 #Forma de organizacion de ventanas
 workspace_layout default
 
+#hide_edge_borders both
 
 new_window pixel 1
 
 #Inner/Ouner
-gaps inner 1
+gaps inner 2
 gaps outer 1
 
 #Para mover ventanas con el mouse
 floating_modifier $mod
+focus_follows_mouse yes
 ###########################################CONTROL DEL ESCRITORIO######################################################
 #Cambiar entre escritorios
 bindsym $mod+Tab workspace next
@@ -36,6 +35,29 @@ bindsym $mod+7    workspace  $ws7
 bindsym $mod+8    workspace  $ws8
 bindsym $mod+9    workspace  $ws9
 bindsym $mod+0    workspace  $ws10
+
+# switch to workspace with numpad keys
+bindcode $mod+87 workspace $ws11
+bindcode $mod+88 workspace $ws12
+bindcode $mod+89 workspace $ws13
+bindcode $mod+83 workspace $ws14
+bindcode $mod+84 workspace $ws15
+bindcode $mod+85 workspace $ws16
+bindcode $mod+79 workspace $ws17
+bindcode $mod+80 workspace $ws18
+bindcode $mod+81 workspace $ws19
+bindcode $mod+90 workspace $ws20
+# switch to workspace with numlock numpad keys
+bindcode $mod+Mod2+87 workspace $ws11
+bindcode $mod+Mod2+88 workspace $ws12
+bindcode $mod+Mod2+89 workspace $ws13
+bindcode $mod+Mod2+83 workspace $ws14
+bindcode $mod+Mod2+84 workspace $ws15
+bindcode $mod+Mod2+85 workspace $ws16
+bindcode $mod+Mod2+79 workspace $ws17
+bindcode $mod+Mod2+80 workspace $ws18
+bindcode $mod+Mod2+81 workspace $ws19
+bindcode $mod+Mod2+90 workspace $ws20
 #Mover ventanas entre escritorios
 bindsym $mod+Shift+1    move container to workspace  $ws1
 bindsym $mod+Shift+2    move container to workspace  $ws2
@@ -47,6 +69,28 @@ bindsym $mod+Shift+7    move container to workspace  $ws7
 bindsym $mod+Shift+8    move container to workspace  $ws8
 bindsym $mod+Shift+9    move container to workspace  $ws9
 bindsym $mod+Shift+0    move container to workspace  $ws10
+# move focused container to workspace with numpad keys
+bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws11
+bindcode $mod+Shift+Mod2+88 	move container to workspace  $ws12
+bindcode $mod+Shift+Mod2+89 	move container to workspace  $ws13
+bindcode $mod+Shift+Mod2+83 	move container to workspace  $ws14
+bindcode $mod+Shift+Mod2+84 	move container to workspace  $ws15
+bindcode $mod+Shift+Mod2+85 	move container to workspace  $ws16
+bindcode $mod+Shift+Mod2+79 	move container to workspace  $ws17
+bindcode $mod+Shift+Mod2+80 	move container to workspace  $ws18
+bindcode $mod+Shift+Mod2+81 	move container to workspace  $ws19
+bindcode $mod+Shift+Mod2+90 	move container to workspace  $ws20
+# move focused container to workspace with numpad keys
+bindcode $mod+Shift+87 	 move container to workspace  $ws11
+bindcode $mod+Shift+88 	 move container to workspace  $ws12
+bindcode $mod+Shift+89 	 move container to workspace  $ws13
+bindcode $mod+Shift+83 	 move container to workspace  $ws14
+bindcode $mod+Shift+84 	 move container to workspace  $ws15
+bindcode $mod+Shift+85 	 move container to workspace  $ws16
+bindcode $mod+Shift+79 	 move container to workspace  $ws17
+bindcode $mod+Shift+80 	 move container to workspace  $ws18
+bindcode $mod+Shift+81 	 move container to workspace  $ws19
+bindcode $mod+Shift+90 	 move container to workspace  $ws20
 #Moverse entre Ventanas
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -79,6 +123,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
 #Cambiar tipo de mosaico
 bindsym $mod+g layout stacking
 bindsym $mod+s layout tabbed
@@ -88,7 +142,7 @@ assign [class="Tilix"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="(?i)Code"] $ws4
-assign [class="(?i)Spotify"] $ws5
+assign [class="spotify"] $ws5
 #Autoasignacion de ventanas
 for_window [class=Tilix] focus
 for_window [class=(?i)Firefox] focus
@@ -96,6 +150,8 @@ for_window [class=Pcmanfm] focus
 for_window [class=(?i)Code] focus
 #for_window [class=TelegramDesktop] focus
 ####################################CONFIGURACIONES SECUNDARIAS###############################
+#Autotiling
+exec_always --no-startup-id autotiling
 #Transparencias
 exec_always --no-startup-id picom -b
 #Administador de volumen
@@ -113,6 +169,8 @@ exec --no-startup-id xset -dpms
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #Poner Ventanas en flotante automaticamente
 for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="KRuler"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
 #Mate power manager
 #exec --no-startup-id mate-power-manager
@@ -154,6 +212,8 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+t exec rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
 #################################################CONTROL MULTIMEDIA####################################
 #Control del brillo (Requiere xbacklight)
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
@@ -161,6 +221,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send 
 #Volumen
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# gradular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 #Mutear
 bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 #Control multimedia
@@ -187,7 +250,8 @@ bar {
         i3bar_command i3bar --transparency FF
 	    	position top
             tray_output primary
-		    tray_padding 0
+		    padding 0 993 0 683
+			#tray_padding 0
             strip_workspace_numbers yes
 
 		    colors {
@@ -203,3 +267,5 @@ bar {
 }
 #Activar o desactivar bordes
 default_border none 
+#Poner el titulo de las ventanas en el centro
+title_align center
