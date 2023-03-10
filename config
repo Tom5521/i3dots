@@ -277,7 +277,7 @@ bar {
         i3bar_command i3bar --transparency FF
 	    	position top
             tray_output primary
-		    padding 0 980 0 671
+		    padding 0 980 0 672
 			tray_padding 0
             strip_workspace_numbers yes
 
