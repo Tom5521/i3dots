@@ -14,8 +14,8 @@ workspace_layout default
 new_window pixel 1
 
 #Inner/Ouner
-gaps inner 2
-gaps outer 1
+gaps inner 3
+gaps outer 3
 
 #Para mover ventanas con el mouse
 floating_modifier $mod
@@ -118,7 +118,7 @@ set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
-set $ws6 "6"
+set $ws6 "6:"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -142,6 +142,7 @@ assign [class="Tilix"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="(?i)Code"] $ws4
+for_window [class="Lxappearance"] $ws6
 for_window [class="^Spotify"] move to workspace $ws5
 #Autofocus de ventanas
 for_window [class="^Spotify"] focus
@@ -150,9 +151,10 @@ for_window [class="(?i)Firefox"] focus
 for_window [class="Pcmanfm"] focus
 for_window [class="(?i)Code"] focus
 #for_window [class=TelegramDesktop] focus
+for_window [class="Lxappearance"] focus
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Autotiling
-exec_always --no-startup-id autotiling
+exec --no-startup-id autotiling
 #Transparencias
 exec_always --no-startup-id picom -b
 #Administador de volumen
@@ -173,6 +175,7 @@ for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable
 for_window [class="kruler" instance="kruler"] floating enable
+for_window [class="Lxappearance"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
 #Mate power manager
 #exec --no-startup-id mate-power-manager
@@ -197,6 +200,8 @@ bindsym $mod+n exec --no-startup-id pcmanfm
 bindsym $mod+w exec --no-startup-id firefox
 #terminal
 bindsym $mod+Return exec --no-startup-id tilix
+#Lxappereance
+bindsym $mod+o exec lxappearance
 #Cerrar
 bindsym $mod+q kill
 #Power Menu
@@ -208,14 +213,14 @@ bindsym $mod+Shift+r restart
 #recargar i3-config
 bindsym $mod+Shift+c reload
 #Screenshot
-bindsym Print exec --no-startup-id gnome-screenshot -a
+bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"captura de pantalla-%Y-%m-%d_$wx"
 #Perfiles de potencia
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
-#bindsym $mod+d exec rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
-bindsym $mod+d exec --no-startup-id xfce4-appfinder
-for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] resize set 640 480
+bindsym $mod+d exec rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym $mod+d exec --no-startup-id xfce4-appfinder
+#for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] resize set 640 480
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 #################################################CONTROL MULTIMEDIA####################################
@@ -238,6 +243,24 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 #intercambiar a Auriculares 
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
+
+#Resize mode
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
 #########################I3-BAR Y CONFIGURACION2 ETC..############################
 #Colores de ventanas etc..------------------------------
 #class                 border  bground text    indicator child_border
@@ -255,12 +278,12 @@ bar {
 	    	position top
             tray_output primary
 		    padding 0 980 0 683
-			#tray_padding 0
+			tray_padding 0
             strip_workspace_numbers yes
 
 		    colors {
-		    #separator          $purple
-		    #background         #00000000
+		    separator          $purple
+		    background         #00000000
 		    #statusline         $white
 #						#	Borde   Fondo   Letras
 		focused_workspace  #4A4A4A #000000 #FFFFFF
