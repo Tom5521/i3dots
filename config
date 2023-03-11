@@ -17,6 +17,11 @@ new_window pixel 1
 gaps inner 3
 gaps outer 3
 
+#Activar o desactivar bordes
+default_border none
+#Poner el titulo de las ventanas en el centro
+title_align center
+
 #Para mover ventanas con el mouse
 floating_modifier $mod
 focus_follows_mouse no
@@ -213,7 +218,7 @@ bindsym $mod+Shift+r restart
 #recargar i3-config
 bindsym $mod+Shift+c reload
 #Screenshot
-bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"captura de pantalla-%Y-%m-%d_$wx"
+bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d_$wx"
 #Perfiles de potencia
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
@@ -292,7 +297,4 @@ bar {
 		urgent_workspace   #900000 #900000 #FFFFFF
 	}
 }
-#Activar o desactivar bordes
-default_border none 
-#Poner el titulo de las ventanas en el centro
-title_align center
+
