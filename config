@@ -218,7 +218,7 @@ bindsym $mod+Shift+r restart
 #recargar i3-config
 bindsym $mod+Shift+c reload
 #Screenshot
-bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d_$wx"
+bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d$wx" && notify-send "Captura de Pantalla tomada"
 #Perfiles de potencia
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
