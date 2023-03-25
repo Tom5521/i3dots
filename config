@@ -288,9 +288,7 @@ bar {
             strip_workspace_numbers yes
 
 		    colors {
-		    separator          $purple
 		    background         #00000080
-		    #statusline         $white
 #						#	Borde   Fondo   Letras
 		focused_workspace  #4A4A4A #000000 #FFFFFF
 		active_workspace   #333333 #222222 #FFFFFF
