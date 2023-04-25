@@ -1,0 +1,35 @@
+background yes
+use_xft yes
+xftfont DejaVu Sans:size=10
+xftalpha 0.8
+update_interval 0.1
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+minimum_size 200 5
+maximum_width 250
+default_color white
+default_shade_color red
+default_outline_color green
+alignment top_left
+gap_x 20
+gap_y 60
+
+TEXT
+${color2}${font DejaVu Sans:size=48}${time %H:%M}${font}${color}
+${font DejaVu Sans:size=14}${time %d-%m-%Y}${font}
+${voffset 20}${hr 2}
+${color3}${font DejaVu Sans:size=10}CPU Usage: ${if_match ${cpu cpu0}>99}${color red}${endif}${cpu cpu0}%${font}${color}
+${cpugraph cpu0 100,200 555555 ff0000 -l -t -s 0.1}
+${color3}${font DejaVu Sans:size=10}RAM Usage: ${if_match ${memperc}>85}${color red}${endif}${mem} / ${memmax}${font}${color}
+${voffset -4}${membar 3,250}${voffset 4}
+${color3}${font DejaVu Sans:size=10}Network Usage:${font}
+${color3}${font DejaVu Sans:size=10}Up: ${upspeed enp0s3}${font}${color}
+${color3}${font DejaVu Sans:size=10}Down: ${downspeed enp0s3}${font}${color}
