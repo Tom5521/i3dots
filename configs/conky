@@ -1,11 +1,22 @@
+
+
+own_window yes
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+own_window_type desktop
+#own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+
+
 background yes
 use_xft yes
 xftfont DejaVu Sans:size=10
 xftalpha 0.8
 update_interval 0.1
 total_run_times 0
-own_window yes
-own_window_type override
+#own_window yes
+#own_window_type override
 own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
@@ -31,5 +42,18 @@ ${cpugraph cpu0 100,200 555555 ff0000 -l -t -s 0.1}
 ${color3}${font DejaVu Sans:size=10}RAM Usage: ${if_match ${memperc}>85}${color red}${endif}${mem} / ${memmax}${font}${color}
 ${voffset -4}${membar 3,250}${voffset 4}
 ${color3}${font DejaVu Sans:size=10}Network Usage:${font}
-${color3}${font DejaVu Sans:size=10}Up: ${upspeed enp0s3}${font}${color}
-${color3}${font DejaVu Sans:size=10}Down: ${downspeed enp0s3}${font}${color}
+${color3}${font DejaVu Sans:size=10}Up: ${upspeed wlan0}${font}${color}
+${color3}${font DejaVu Sans:size=10}Down: ${downspeed wlan0}${font}${color}
+
+${color3}${font DejaVu Sans:size=10}Top Processes by CPU:${font}${color}
+${top name 1}${alignr}${top cpu 1}%
+${top name 2}${alignr}${top cpu 2}%
+${top name 3}${alignr}${top cpu 3}%
+${top name 4}${alignr}${top cpu 4}%
+${top name 5}${alignr}${top cpu 5}%
+${voffset 10}${color3}${font DejaVu Sans:size=10}Top Processes by Memory:${font}${color}
+${top_mem name 1}${alignr}${top_mem mem_res 1}
+${top_mem name 2}${alignr}${top_mem mem_res 2}
+${top_mem name 3}${alignr}${top_mem mem_res 3}
+${top_mem name 4}${alignr}${top_mem mem_res 4}
+${top_mem name 5}${alignr}${top_mem mem_res 5}
