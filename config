@@ -144,6 +144,8 @@ bindsym $mod+g layout stacking
 bindsym $mod+s layout tabbed
 bindsym $mod+a layout toggle split
 #Asignaciones de programas para cada escritorio
+assign [class="kitty"] $ws1
+assign [class="Thunar"] $ws3
 assign [class="Tilix"] $ws1
 assign [class="(?i)Firefox"] $ws2
 assign [class="Google-chrome"] $ws2
@@ -152,22 +154,23 @@ assign [class="(?i)Code"] $ws4
 for_window [class="Lxappearance"] $ws6
 for_window [class="^Spotify"] move to workspace $ws5
 #Autofocus de ventanas
+for_window [class="kitty"] focus
 for_window [class="^Spotify"] focus
 for_window [class="Tilix"] focus
 for_window [class="(?i)Firefox"] focus
 for_window [class="Pcmanfm"] focus
+for_window [class="Thunar"] focus
 for_window [class="(?i)Code"] focus
-#for_window [class=TelegramDesktop] focus
 for_window [class="Lxappearance"] focus
 for_window [class="Google-chrome"] focus
 
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Conky
-exec --no-startup-id conky -d -c /home/tom/Desarrollo/i3dots/configs/conky
+exec --no-startup-id conky -d -c ~/.config/i3/configs/conky
 #Autotiling
 exec --no-startup-id autotiling
 #Transparencias
-exec_always --no-startup-id picom -b
+exec_always --no-startup-id picom -b --config ~/.config/i3/configs/picom.conf
 #Administador de volumen
 exec --no-startup-id volctl
 #Wallpaper
@@ -201,6 +204,8 @@ exec --no-startup-id kdeconnect-indicator
 #Oneko
 #exec --no-startup-id oneko
 #########################################ACCIONES#######################################################
+# Guake
+bindsym F12 exec --no-startup-id guake -t
 #glava
 bindsym $mod+Shift+g exec --no-startup-id  python ~/Scripts/glava.py
 #Reconfigurar Teclado
@@ -208,13 +213,13 @@ bindsym $mod+Shift+k exec --no-startup-id setxkbmap es
 #VScode
 bindsym $mod+c exec --no-startup-id code 
 #Spotify
-bindsym $mod+m exec --no-startup-id LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
+#bindsym $mod+m exec --no-startup-id LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
 #Pcmanfm
-bindsym $mod+n exec --no-startup-id pcmanfm
+bindsym $mod+n exec --no-startup-id thunar
 #Navegador
 bindsym $mod+w exec --no-startup-id firefox
 #terminal
-bindsym $mod+Return exec --no-startup-id tilix
+bindsym $mod+Return exec --no-startup-id kitty
 #Lxappereance
 bindsym $mod+o exec lxappearance
 #Cerrar
@@ -228,18 +233,18 @@ bindsym $mod+Shift+r restart
 #recargar i3-config
 bindsym $mod+Shift+c reload
 #Screenshot
-bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d$wx.png" && notify-send "Captura de Pantalla tomada"
+bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d$wx.png" && notify-send "Captura de Pantalla tomada Exitosamente"
 #Perfiles de potencia
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
-bindsym $mod+d exec bash ~/Scripts/rofi.sh
+bindsym $mod+d exec bash ~/.config/i3/scripts/rofi.sh
 #bindsym $mod+d exec --no-startup-id xfce4-appfinder
 #for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] resize set 640 480
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 #################################################CONTROL MULTIMEDIA####################################
 #Control del brillo
-bindsym XF86MonBrightnessUp exec --no-startup-id bash /home/tom/Scripts/brightness.sh +5
+bindsym XF86MonBrightnessUp exec --no-startup-id bash ~/.config/i3/scripts/brightness.sh +5
 bindsym XF86MonBrightnessDown exec --no-startup-id bash /home/tom/Scripts/brightness.sh -5
 #Volumen
 bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
