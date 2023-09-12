@@ -233,7 +233,10 @@ bindsym $mod+Shift+r restart
 #recargar i3-config
 bindsym $mod+Shift+c reload
 #Screenshot
-bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d$wx.png" && notify-send "Captura de Pantalla tomada Exitosamente"
+bindsym Print exec --no-startup-id xfce4-screenshooter -r
+bindsym Shift+Print exec --no-startup-id xfce4-screenshooter
+bindsym Alt+Print exec --no-startup-id xfce4-screenshooter -w
+#bindsym Print exec --no-startup-id scrot --quality 100 -z -p -F ~/Imágenes/Capturas\ de\ pantalla/"Captura de Pantalla-%Y-%m-%d$wx.png" && notify-send "Captura de Pantalla tomada Exitosamente"
 #Perfiles de potencia
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 #Ejecutar rofi
@@ -297,7 +300,7 @@ bar {
 		position top
 
 
-		    padding 0 969 0 670
+		    padding 0 980 0 670
 			#tray_padding 0
 
             strip_workspace_numbers yes
