@@ -176,8 +176,8 @@ exec --no-startup-id volctl
 #Wallpaper
 exec --no-startup-id nitrogen --restore --save --set-auto
 #exec --no-startup-id feh --bg-scale "/home/angel/Imágenes/Fondos de Pantalla PC/Astronautas wallpaper.jpg"
-#Autenticacion interactiva de gnome
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#Poner el polkit de xfce4
+exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 #Poner el teclado en español u otros
 exec_always --no-startup-id setxkbmap -layout es
 #Desabilitar el ahorro de energia
@@ -190,6 +190,9 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable
 for_window [class="kruler" instance="kruler"] floating enable
 for_window [class="Lxappearance"] floating enable
+for_window [class="scrcpy"] floating enable
+for_window [class="kate"] floating enable
+for_window [class="kdeconnect.app"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
 #Mate power manager
 #exec --no-startup-id mate-power-manager
