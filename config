@@ -151,8 +151,10 @@ assign [class="(?i)Firefox"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Pcmanfm"] $ws3
 assign [class="(?i)Code"] $ws4
-for_window [class="Lxappearance"] $ws6
-for_window [class="^Spotify"] move to workspace $ws5
+assign [class="Lxappearance"] $ws6
+assign [class="^Spotify"] $ws5
+assign [class="Neovim"] $ws4
+
 #Autofocus de ventanas
 for_window [class="kitty"] focus
 for_window [class="^Spotify"] focus
@@ -163,6 +165,7 @@ for_window [class="Thunar"] focus
 for_window [class="(?i)Code"] focus
 for_window [class="Lxappearance"] focus
 for_window [class="Google-chrome"] focus
+for_window [class="kitty" instance="Neovim"] focus
 
 ####################################CONFIGURACIONES SECUNDARIAS###############################
 #Conky
@@ -191,7 +194,7 @@ for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable
 for_window [class="kruler" instance="kruler"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="scrcpy"] floating enable
-for_window [class="kate"] floating enable
+#for_window [class="kate"] floating enable
 for_window [class="kdeconnect.app"] floating enable
 #Auto-ejecutar estas apps---------------------------------------------------------
 #Mate power manager
